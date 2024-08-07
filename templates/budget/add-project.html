@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container">
-    <form action="" method="POST">
+    <form action="" method="POST" id="projectForm">
         {% csrf_token %}
         {{ form }}
         <label for="categoryInput">Expense Categories (hit enter after every category)</label>
