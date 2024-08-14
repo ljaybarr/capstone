@@ -1,14 +1,41 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
 {% block content %}
 
 <div class="container">
 
-    <div class="noproject-wrapper center">
-        <h3 class="grey-text">Sorry, you don't have any projects yet.</h3>
-        <a href="" class="btn-large grey">
-            <span class="hold">Add Project</span>
-        </a>
+    <h1>My Projects</h1>
+    <hr>
+    
+    <div class="row">
+        {% for project in project_list %}              
+            <div class="col s12 13">
+                <div class="card-panel">
+                    <h5>{{ project.name }}</h5>
+                    <a href="{% url 'detail' project_slug=project.slug %}" class="btn">Visit</a>
+                </div>
+            </div>
+            <a href="{% url 'add' %}" class="btn-large grey">
+                <span class="hold">Add New Project</span>
+            </a>
+        {% endfor %}
+
+
+        {% if project_list|length == 0 %}
+        <div class="noproject-wrapper center">
+            <h3 class="grey-text">Sorry, you don't have any projects yet.</h3>
+            <a href="{% url 'add' %}" class="btn-large grey">
+                <span class="hold">Add Project</span>
+            </a>
+        </div>
+
+        {% endif %}
+
     </div>
+
+
 
 </div>
 

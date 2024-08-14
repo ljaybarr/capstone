@@ -1,0 +1,23 @@
+{% extends 'base.html' }
+
+{% load static %}
+
+{% block title %}User Profile{% endblock %}
+
+
+{% block content %}
+
+<div>
+    <h3>Profile Page</h3>
+    
+    <img src="{{user.profile.avatar.url}}" />
+    <h5>{{user.username}}</h5>
+    <label>{{user.email}}</label>
+
+    <hr />
+    <label>First name: {{user.first_name}}</label>
+    <label>Last name: {{user.last_name}}</label>
+    <label>Phone number: {{user.profile.phone_number}}</label>
+</div>
+
+{% endblock %}

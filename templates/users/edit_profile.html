@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Edit Profile{% endblock %}
+
+
+{% block content %}
+
+<div>
+
+    <h3>Edit Profile</h3>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% if user.profile.avatar %}
+            <img src="{{user.profile.avatar.url}}" alt="">
+        {% endif %}
+        
+        <div class="form-group">
+            <label class="form-label">Avatar</label>
+            <input type="file" class="form-control" name="avatar">
+        </div>
+
+        <hr>
+
+        <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="text" class="form-control" name="phone_number" value="{{user.profile.phone_number}}">
+        </div>
+        
+
+        <button class="btn btn-dark">Save Changes</button>
+    </form>
+
+</div>
+
+{% endblock %}
