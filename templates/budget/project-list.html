@@ -11,10 +11,11 @@
     
     <div class="row">
         {% for project in project_list %}              
-            <div class="col s12 13">
+            <div class="col s12 13 section-projects">
                 <div class="card-panel">
                     <h5>{{ project.name }}</h5>
                     <a href="{% url 'detail' project_slug=project.slug %}" class="btn">Visit</a>
+                    <a class="close-icon" onclick="deleteProject(this)" data-id="{{ project.id }}"><i class="material-icon red-text right">close</i></a>
                 </div>
             </div>
             <a href="{% url 'add' %}" class="btn-large grey">
@@ -38,5 +39,24 @@
 
 
 </div>
+
+<script>
+    function deleteProject(e){
+
+        let id = e.dataset.id
+        e.closest('project').remove()
+
+        fetch('', {
+            method: 'DELETE',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({
+                'id': id
+            }),
+            credentials: 'same-origin',
+        })
+    }
+</script>
 
 {% endblock %}

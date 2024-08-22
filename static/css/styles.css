@@ -15,7 +15,10 @@ h1, h6 {
     margin: 0!important;
 }
 
-
+/* project list */
+.section-projects .close-icon:hover {
+    cursor: pointer;
+}
 
 /* project list (no projects) */
 .noproject-wrapper {
