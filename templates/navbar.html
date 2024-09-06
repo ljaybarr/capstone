@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">SDGKU Capstone</a>
+    <a class="navbar-brand" href="{% url 'home' %}">Budget Tracker</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -8,26 +8,27 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          <a class="nav-link text-light {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Home</a>
         </li>
-        <li class="nav-item">  
-          <a class="nav-link active" aria-current="page" href="{% url 'list' %}">Projects</a>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link text-light {% if request.path == '/list/' %}active{% endif %}" href="{% url 'list' %}">Projects</a>
         </li>
-        <li class="nav-item">  
-          <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About us</a>
+        {% endif %}
+        <li class="nav-item">
+          <a class="nav-link text-light {% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">About us</a>
         </li>
       </ul>
-        
-        <div>
-          {% if user.is_authenticated %}
-            <a href="{% url   'profile'  user_id=user.id %}">{{ user.username }}</a>
-
-            <a href="{% url 'edit_profile' %}">Edit Profile</a>
-            <a href="{% url 'logout' %}" class="btn btn-outline-dark">Log out</a>
-          {% else %}
-            <a href="{% url 'login' %}" class="btn btn-outline-dark">Log in</a>
-          {% endif %}
-        </div>
+      
+      <div class="d-flex align-items-center">
+        {% if user.is_authenticated %}
+          <a href="{% url 'profile' user_id=user.id %}" class="text-light me-3">{{ user.username }}</a>
+          <a href="{% url 'edit_profile' %}" class="btn btn-primary me-3">Edit Profile</a>
+          <a href="{% url 'logout' %}" class="btn btn-primary">Log out</a>
+        {% else %}
+          <a href="{% url 'login' %}" class="btn btn-primary">Log in</a>
+        {% endif %}
+      </div>
     </div>
   </div>
 </nav>

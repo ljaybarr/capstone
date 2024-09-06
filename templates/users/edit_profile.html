@@ -4,20 +4,20 @@
 
 {% block title %}Edit Profile{% endblock %}
 
-
 {% block content %}
 
-<div>
-
-    <h3>Edit Profile</h3>
+<div class="container">
+    <h3 class="text-center">Edit Profile</h3>
 
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
-        {% if user.profile.avatar %}
-            <img src="{{user.profile.avatar.url}}" alt="">
-        {% endif %}
-        
+        <div class="text-center mb-4">
+            {% if user.profile.avatar %}
+                <img src="{{user.profile.avatar.url}}" alt="Profile Avatar" class="img-fluid rounded-circle" style="max-width: 150px;">
+            {% endif %}
+        </div>
+
         <div class="form-group">
             <label class="form-label">Avatar</label>
             <input type="file" class="form-control" name="avatar">
@@ -29,11 +29,9 @@
             <label class="form-label">Phone Number</label>
             <input type="text" class="form-control" name="phone_number" value="{{user.profile.phone_number}}">
         </div>
-        
 
-        <button class="btn btn-dark">Save Changes</button>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
     </form>
-
 </div>
 
 {% endblock %}

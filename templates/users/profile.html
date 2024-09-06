@@ -1,23 +1,40 @@
-{% extends 'base.html' }
+{% extends 'base.html' %}
 
 {% load static %}
 
 {% block title %}User Profile{% endblock %}
 
-
 {% block content %}
 
-<div>
-    <h3>Profile Page</h3>
-    
-    <img src="{{user.profile.avatar.url}}" />
-    <h5>{{user.username}}</h5>
-    <label>{{user.email}}</label>
+<div class="container mt-4">
+    <h3 class="mb-4">Profile Page</h3>
 
-    <hr />
-    <label>First name: {{user.first_name}}</label>
-    <label>Last name: {{user.last_name}}</label>
-    <label>Phone number: {{user.profile.phone_number}}</label>
+    <div class="text-center mb-4">
+        <!-- User profile image with styling -->
+        <img src="{{ user.profile.avatar.url }}" alt="{{ user.username }}'s avatar" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+    </div>
+    
+    <div class="text-center mb-3">
+        <h5>{{ user.username }}</h5>
+        <p>{{ user.email }}</p>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label class="font-weight-bold">First name:</label>
+            <p>{{ user.first_name }}</p>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="font-weight-bold">Last name:</label>
+            <p>{{ user.last_name }}</p>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="font-weight-bold">Phone number:</label>
+            <p>{{ user.profile.phone_number }}</p>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

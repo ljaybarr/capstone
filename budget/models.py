@@ -10,7 +10,12 @@ class Project(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        slug = slugify(self.name)
+        count = Project.objects.filter(slug=slug).count()
+        if(count  > 0):
+            slug = F"{slug}-{count}"
+        
+        self.slug = slug
         super(Project, self).save(*args, **kwargs)
         
     def budget_left(self):

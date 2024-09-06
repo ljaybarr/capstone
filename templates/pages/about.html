@@ -1,9 +1,32 @@
 {% extends 'base.html' %}
 
+{% load static %}
 
 {% block title %}About{% endblock %}
 
 {% block content %}
-<h1>About Us</h1>
+
+<section class="container py-5 mt-4">
+    <div class="header text-center mb-5">
+        <h1 class="text-purple">About Us</h1>
+        <p class="lead">Create multiple personalized budgets to track every dollar, understand your spending, and take control of your financial future.</p>
+    </div>
+
+    <div class="body mb-5">
+        <h2 class="text-light">My Mission</h2>
+        <p class="center">My mission is to make budgeting simple, intuitive, and accessible to everyone. We believe that financial freedom starts with understanding where your money goes, and we're here to help you do just that.</p>
+        
+        <h2 class="text-light">My Story</h2>
+            <img src="{% static './img/Me.jpg' %}" alt="Jay Barr" class="img-fluid border border-light rounded mb-3 mx-auto d-block">
+        <h3 class="center">Jay Barr</h3>
+        <p class="center">Budget Tracker was created out of a personal passion for managing finances more effectively. Rather than struggling with complicated tools and messy spreadsheets, I decided to create a solution that would simplify budgeting for everyone.</p>
+    </div>
+
+    <div class="join text-center py-5 bg-dark text-light rounded">
+        <h2 class="text-light">Join Us</h2>
+        <p>Ready to take control of your finances? Sign up today and start your journey towards financial freedom!</p>
+        <a href="{% url 'register' %}" class="btn btn-primary">Sign Up Now</a>
+    </div>
+</section>
 
 {% endblock %}

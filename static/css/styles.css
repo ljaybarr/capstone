@@ -1,74 +1,647 @@
-
-
 /* General */
 html {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #e0e0e0;
+    background-color: #121212;
+    color: #e0e0e0;
 }
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+}
+
 h1, h6 {
     font-weight: bold;
+    color: #ffffff;
 }
+
 .bold {
     font-weight: bold;
 }
+
 .row {
     margin: 0!important;
 }
 
-/* project list */
-.section-projects .close-icon:hover {
-    cursor: pointer;
+/* Navbar */
+.navbar {
+    background-color: #1f1f1f;
 }
 
-/* project list (no projects) */
+.navbar-brand {
+    color: #bb86fc !important;
+}
+
+.navbar a {
+    color: #e0e0e0;
+}
+
+.navbar a:hover {
+    color: #bb86fc;
+}
+
+/* Buttons */
+.btn-primary, .btn-light {
+    background-color: #bb86fc;
+    border-color: #bb86fc;
+    color: #ffffff;
+}
+
+.btn-primary:hover, .btn-light:hover {
+    background-color: #9f6ce6;
+    border-color: #9f6ce6;
+}
+
+/* Sections */
+section {
+    background-color: #1e1e1e;
+    padding: 40px 0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+section h2 {
+    color: #ffffff;
+}
+
+section p, section h5 {
+    color: #e0e0e0;
+}
+
+.section-dark {
+    background-color: #2b2b2b;
+}
+
+/* Footer */
+footer {
+    background-color: #4a4a4a; /* Lighter warm grey */
+    color: #e0e0e0;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+.form-control {
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #757575;
+}
+
+.form-control:focus {
+    border-color: #bb86fc;
+    box-shadow: 0 0 0 0.2rem rgba(187, 134, 252, 0.25);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #bb86fc;
+    border-color: #bb86fc;
+}
+
+.btn-primary:hover {
+    background-color: #9f6ce6;
+    border-color: #9f6ce6;
+}
+
+/* Card Panels */
+.card-panel {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    box-shadow: none;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-panel h5 {
+    margin-bottom: auto;
+}
+
+.card-panel a {
+    margin-top: auto;
+}
+
+/* Icons */
+.icon-purple {
+    color: #bb86fc;
+}
+
+/* Text Colors */
+.text-purple {
+    color: #bb86fc;
+}
+
+.text-light {
+    color: #e0e0e0 !important;
+}
+
+.text-cool {
+    color: #6c757d;
+}
+
+.green-text {
+    color: #6fcf97 !important;
+}
+
+.red-text {
+    color: #e74c3c !important;
+}
+
+/* Dark Background for Specific Elements */
+.bg-dark {
+    background-color: #121212 !important;
+}
+
+.bg-dark-secondary {
+    background-color: #1e1e1e;
+}
+
+.bg-warm {
+    background-color: #4a4a4a;
+}
+
+/* Modal */
+#expenseModal {
+    box-shadow: none;
+    background: none;
+}
+
+.modal-content {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+}
+
+.modal-content label {
+    color: #bdbdbd;
+}
+
+.modal-header {
+    border-bottom: 1px solid #333;
+}
+
+.modal-title {
+    color: #ffffff;
+}
+.modal-body {
+    padding: 20px;
+}
+
+.modal-content input,
+.modal-content select {
+    background-color: #333;
+    color: #ffffff;
+    border: none;
+    border-bottom: 1px solid #757575;
+    margin-bottom: 20px;
+}
+
+/* Lists */
+ul.z-depth-1 {
+    background-color: #1e1e1e;
+    border-radius: 5px;
+}
+
+ul.z-depth-1 li {
+    border-bottom: 1px solid #333;
+}
+
+ul.z-depth-1 li:last-child {
+    border-bottom: none;
+}
+
+/* Project List */
+.section-projects .close-icon:hover {
+    cursor: pointer;
+    color: #bb86fc;
+}
+
+/* Project List (No Projects) */
 .noproject-wrapper {
     margin-top: 25px;
     padding: 80px 0px;
-    border: 6px solid #9e9e9e;
-    border-style: dashed;
+    border: 6px dashed #9e9e9e;
+    background-color: #1e1e1e;
+    border-radius: 10px;
 }
+
 .noproject-wrapper h3 {
     padding: 10px;
     margin-bottom: 50px;
+    color: #e0e0e0;
 }
 
-/* project add view */
+/* Project Add View */
 form ul li.category {
     display: inline-block;
-    background-color: white;
+    background-color: #2b2b2b;
     padding: 5px 10px;
     margin-right: 5px;
+    color: #e0e0e0;
 }
 
-/* project detail statistics */
+.btnRemove {
+    cursor: pointer;
+}
+
+.btnRemove:hover {
+    color: #ff4d4d;
+}
+
+/* Project Detail Statistics */
 .section-stats h1 {
     font-size: 4vw;
     margin: 15px 0px;
+    color: #ffffff;
 }
-@media(max-width: 992px){
+
+@media(max-width: 992px) {
     .section-stats h1 {
         font-size: calc(16px + 6vw);
     }
 }
 
-/* project detail expenses */
+/* Project Detail Expenses */
 .section-expenses button {
-    padding: 0px 40px;
+    padding: 0;
     font-weight: bold;
     text-shadow: 0px 3px 4px rgba(0, 0, 0, .25);
-    background-color: #6fcf97;
+    background-color: #bb86fc;
+    color: #ffffff;
+    border-radius: 5px;
 }
+
 .section-expenses .expense {
     font-size: 16px;
-    border-radius: 0;
+    border-radius: 5px;
     margin: 0;
+    background-color: #2b2b2b;
+    color: #e0e0e0;
 }
+
 .section-expenses .expense .category {
     font-size: 13px;
+    color: #bb86fc;
 }
+
 .section-expenses li:nth-child(even) .expense {
-    background-color: #f2f2f2;
+    background-color: #3a3a3a;
 }
+
 .section-expenses .close-icon:hover {
     cursor: pointer;
+    color: #bb86fc;
+}
+
+/* Profile */
+img.img-fluid {
+    border-radius: 50%;
+    border: 2px solid #bb86fc;
+}
+
+/* Testimonials */
+.testimonial {
+    border-color: #bb86fc !important;
+}
+
+/* About Page */
+.header, .body, .join {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border-radius: 8px;
+}
+
+.header {
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+
+.header p {
+    font-size: 1.2rem;
+    color: #b0b0b0;
+}
+
+.body h2, .join h2 {
+    font-size: 2rem;
+    border-bottom: 2px solid #bb86fc;
+    padding-bottom: 10px;
+}
+
+.body h3 {
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+.body p, .join p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Register Page */
+.register {
+    max-width: 500px;
+    margin: auto;
+    margin-top: 3rem;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    color: #e0e0e0;
+}
+
+.register h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.register .form-group {
+    margin-bottom: 15px;
+}
+
+.register .form-group label {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.register .form-group input,
+.register .form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+.register .form-group input:focus,
+.register .form-group select:focus {
+    border-color: #bb86fc;
+    outline: none;
+}
+
+.register button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-link {
+    color: #bb86fc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+/* Login Page */
+.login-container {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 3rem;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    color: #e0e0e0;
+}
+
+.login-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form .form-group {
+    margin-bottom: 15px;
+}
+
+.login-form .form-group label {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.login-form .form-group input,
+.login-form .form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+.login-form .form-group input:focus,
+.login-form .form-group select:focus {
+    border-color: #bb86fc;
+    outline: none;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: #bb86fc;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+}
+
+.login-form button:hover {
+    background-color: #9f6ce6;
+}
+
+.login-form hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #333;
+}
+
+.signup-link {
+    text-align: center;
+}
+
+.signup-link p {
+    margin-bottom: 10px;
+}
+
+.signup-link .btn-link {
+    color: #bb86fc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-link .btn-link:hover {
+    text-decoration: underline;
+}
+
+.forgot-password-link {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.forgot-password-link .btn-link {
+    color: #bb86fc;
+    text-decoration: none;
+}
+
+.forgot-password-link .btn-link:hover {
+    text-decoration: underline;
+}
+
+input[type="text"], 
+input[type="password"], 
+input[type="email"], 
+textarea {
+    background-color: #333;
+    color: #ffffff;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+input[type="text"]:focus, 
+input[type="password"]:focus, 
+input[type="email"]:focus, 
+textarea:focus {
+    border-color: #bb86fc;
+    outline: none;
+    background-color: #444;
+}
+
+input::placeholder, 
+textarea::placeholder {
+    color: #999;
+}
+
+/* Tablet Portrait and Landscape */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .navbar {
+        padding: 0.5rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 0.4rem 0.8rem;
+    }
+
+    .navbar-collapse {
+        background-color: rgba(0, 0, 0, 0.85);
+        padding: 1rem;
+        border-radius: 0.5rem;
+    }
+    
+    .navbar-collapse.show {
+        background-color: rgba(0, 0, 0, 0.95);
+        transition: background-color 0.3s ease-in-out;
+    }    
+}
+
+/* Mobile Portrait */
+@media (max-width: 576px) {
+    .container {
+        width: 100%;
+    }
+
+    .navbar {
+        padding: 0.5rem;
+    }
+
+    .navbar-brand {
+        font-size: 1rem;
+    }
+
+    .navbar-toggler {
+        margin-right: 0;
+    }
+
+    .nav-link {
+        font-size: 0.8rem;
+    }
+
+    .btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    .login-container,
+    .register {
+        padding: 1rem;
+    }
+
+    .navbar-collapse {
+        background-color: rgba(0, 0, 0, 0.85);
+        padding: 1rem;
+        border-radius: 0.5rem;
+    }
+    
+    .navbar-collapse.show {
+        background-color: rgba(0, 0, 0, 0.95);
+        transition: background-color 0.3s ease-in-out;
+    }    
+}
+
+/* Responsive navbar toggler */
+.navbar-toggler {
+    border: none;
+}
+
+/* Modal Styling */
+.modal-dialog {
+    max-width: 90%;
+    margin: 1.75rem auto;
+}
+
+.modal-content {
+    border-radius: 0.3rem;
+}
+
+input[type="text"], input[type="password"], input[type="email"], textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+button {
+    width: 100%;
 }

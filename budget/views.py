@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from .models import Project, Category, Expense
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from django.utils.text import slugify
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .forms import ExpenseForm
 import json
@@ -67,4 +68,35 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return slugify(self.request.POST['name'])
+    
+class ProjectUpdateView(LoginRequiredMixin, UpdateView):
+    model = Project
+    template_name = 'budget/add-project.html'
+    fields = ('name', 'budget')
+    slug_field = 'slug'
+    slug_url_kwarg ='project_slug'
+    
+    def form_valid(self, form):
+        project = self.object
+        form.instance.author = self.request.user
+        self.object = form.save(commit=False)
+        self.object.save()
+    
+        categories = self.request.POST['categoriesString'].split(',')
+        for category in categories:
+            Category.objects.create(
+                project=Project.objects.get(id=self.object.id),
+                name=category
+            ).save()
+        
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        project = self.object
+        return reverse('detail', kwargs={"project_slug":project.slug})
+      
+def project_delete(request, project_slug):
+    project = get_object_or_404(Project, slug=project_slug)
+    project.delete()
+    return redirect('list')
     

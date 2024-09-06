@@ -4,34 +4,39 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container mt-5 text-light">
 
-    <h1>My Projects</h1>
-    <hr>
+    <h1 class="text-purple">My Projects</h1>
+    <hr class="bg-primary">
     
     <div class="row">
         {% for project in project_list %}              
-            <div class="col s12 13 section-projects">
-                <div class="card-panel">
+            <div class="col s12 14 section-projects mb-4">
+                <div class="card-panel bg-dark text-light p-3">
                     <h5>{{ project.name }}</h5>
-                    <a href="{% url 'detail' project_slug=project.slug %}" class="btn">Visit</a>
-                    <a class="close-icon" onclick="deleteProject(this)" data-id="{{ project.id }}"><i class="material-icon red-text right">close</i></a>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="{% url 'detail' project_slug=project.slug %}" class="btn btn-primary">Visit</a>
+                        <div>
+                            <a href="{% url 'edit' project.slug %}" class="text-light mx-2"><i class="fas fa-edit"></i></a>
+                            <a href="{% url 'delete' project.slug %}" class="text-danger"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <a href="{% url 'add' %}" class="btn-large grey">
+            {% endfor %}
+            <a href="{% url 'add' %}" class="btn btn-primary mt-3">
                 <span class="hold">Add New Project</span>
             </a>
-        {% endfor %}
 
 
         {% if project_list|length == 0 %}
-        <div class="noproject-wrapper center">
-            <h3 class="grey-text">Sorry, you don't have any projects yet.</h3>
-            <a href="{% url 'add' %}" class="btn-large grey">
+        <div class="noproject-wrapper text-center py-5">
+            <h3 class="text-secondary">Sorry, you don't have any projects yet.</h3>
+            <a href="{% url 'add' %}" class="btn btn-primary mt-3">
                 <span class="hold">Add Project</span>
             </a>
         </div>
-
+        
         {% endif %}
 
     </div>
@@ -39,24 +44,5 @@
 
 
 </div>
-
-<script>
-    function deleteProject(e){
-
-        let id = e.dataset.id
-        e.closest('project').remove()
-
-        fetch('', {
-            method: 'DELETE',
-            headers: {
-                'X-CSRFToken': '{{ csrf_token }}'
-            },
-            body: JSON.stringify({
-                'id': id
-            }),
-            credentials: 'same-origin',
-        })
-    }
-</script>
 
 {% endblock %}

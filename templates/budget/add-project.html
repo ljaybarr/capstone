@@ -7,14 +7,14 @@
         {% csrf_token %}
         {{ form }}
         <label for="categoryInput">Expense Categories (hit enter after every category)</label>
-        <input type="text" name="categoryInput" id="categoryInput">
+        <input type="text" name="categoryInput" id="categoryInput" aria-label="Add expense category">
         <input type="hidden" name="categoriesString">
 
-        <ul id="categoriesContainer">
+        <ul id="categoriesContainer" class="categories-list">
             
         </ul>
 
-        <button type="submit" class="btn">Start Project</button>
+        <button type="submit" class="btn btn-primary">Start Project</button>
 
     </form>
 </div>
