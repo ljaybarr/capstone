@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, PasswordResetView
 from django.views.generic.edit import CreateView
 from django.contrib.auth import logout
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
+from django.contrib.auth.forms import PasswordResetForm
 from django.shortcuts import redirect, get_object_or_404
 from .forms import UserRegisterForm
 from .models import Profile
@@ -43,6 +44,10 @@ def user_logout_view(request):
     logout(request)
     return redirect('login')
 
+class CustomPasswordResetView(PasswordResetView):
+    template_name = 'users/password_reset_form.html'
+    success_url = reverse_lazy('password_reset_done')
+    form_class = PasswordResetForm
 
 
 
